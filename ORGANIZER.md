@@ -8,9 +8,15 @@ Codespaces created from this template pull a **prebuilt image** from `ghcr.io/za
 
 The image is built by `.github/workflows/build-devcontainer-image.yml` from `.devcontainer/Dockerfile` on every push to `main` that touches either of those files.
 
-### ⚠️ One-time setup: make the image public
+### ⚠️ Check that the image is publicly pullable
 
-**GHCR packages are private by default on first publish.** Until you flip the package to public, every attendee's Codespace will fail to pull the image with a `denied` error. After the very first workflow run completes:
+After the first workflow run, **verify** that the image can be pulled without auth:
+
+```bash
+docker pull ghcr.io/<owner>/hackathon-template-env:latest
+```
+
+If you get a `denied` / `manifest not found` error, the package was published as private (the default for GHCR packages owned by orgs, sometimes for users too — behavior varies). Flip it to public:
 
 1. Go to `https://github.com/users/<your-username>/packages/container/hackathon-template-env/settings` (or your org equivalent at `/orgs/<org>/packages/...`).
 2. Scroll to **Danger Zone** -> **Change visibility** -> **Public** -> confirm.
