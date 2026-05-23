@@ -49,7 +49,9 @@ Verify with `gh repo view <owner>/<repo> --json isTemplate`.
 
 ## 2. (Optional) Pre-provision a shared AI API key
 
-To save attendees from the "I don't have an API key" detour, you can ship one shared key via org-level Codespaces secrets. This is the single biggest UX win of the event.
+The template ships with `opencode.json` defaulting to `opencode/deepseek-v4-flash-free` — a free model served through opencode's hosted gateway, no key required. **For most events you don't need to provision anything.** Attendees run `opencode`, it works.
+
+You may still want a shared paid key if your event needs higher-end model quality (Claude Sonnet, GPT-4, etc.) — e.g. a competitive hackathon where output quality directly affects judging. In that case, ship one shared key via org-level Codespaces secrets.
 
 **Steps (requires you to own a GitHub org):**
 

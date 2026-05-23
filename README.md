@@ -43,30 +43,25 @@ opencode is an AI coding agent that lives in your terminal. Open a terminal in V
 opencode
 ```
 
-You'll need to authenticate first. There are three ways:
+**It just works out of the box.** This template ships an `opencode.json` that defaults to `opencode/deepseek-v4-flash-free` — a free model served through opencode's hosted gateway, no API key needed. Start chatting immediately.
 
-### Option 1: Shared org API key (easiest, if organizers set this up)
-If the event organizers pre-provisioned a shared API key, **it's already there as an environment variable** — opencode will pick it up automatically. Just run `opencode` and start chatting.
+### Want a different / more powerful model?
 
-### Option 2: Bring your own API key
-Set the appropriate environment variable in your codespace terminal:
+If your project gets serious and you want to switch to a paid model (Claude, GPT-4, DeepSeek V4 Pro, etc.), you have a few options:
 
+**Use a shared org API key (if organizers set one up):** organizers can pre-provision an API key as an env var — opencode will pick it up automatically. Edit `opencode.json` to point at the model you want and the corresponding provider (e.g. `"model": "anthropic/claude-sonnet-4-5"`).
+
+**Bring your own key:**
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
-# or
-export OPENAI_API_KEY=sk-...
+export ANTHROPIC_API_KEY=sk-ant-...   # or OPENAI_API_KEY, etc.
 ```
+Then edit `opencode.json`'s `"model"` field. To persist across terminal sessions, add it as a [Codespaces user secret](https://github.com/settings/codespaces).
 
-To persist across terminal sessions, add it as a [Codespaces user secret](https://github.com/settings/codespaces) — it'll auto-load every time.
-
-### Option 3: Log in with your Claude or ChatGPT subscription
-If you have a paid Claude or ChatGPT account, run:
-
+**Use a Claude or ChatGPT subscription:**
 ```bash
 opencode auth login
 ```
-
-Pick your provider and follow the browser prompt. This uses your subscription instead of pay-per-token API credits.
+Follow the browser prompt. This uses your subscription instead of pay-per-token API credits.
 
 ## Where to deploy your project
 

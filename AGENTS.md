@@ -15,6 +15,7 @@ The contents of this repo are **scaffolding**, not a working application. Attend
 - `.github/workflows/build-devcontainer-image.yml` — Builds the Dockerfile and pushes to `ghcr.io/<owner>/hackathon-template-env:latest` on push to `main`. Only triggers on changes to the Dockerfile or the workflow itself.
 - `README.md` — Attendee-facing. Non-technical tone. Covers using the template, what's installed, opencode auth, deploy targets, port sharing, free-tier limits.
 - `ORGANIZER.md` — Event-organizer-facing. Covers the prebuilt-image setup (including the one-time "make package public" step), template toggle, org Codespaces secrets for shared API keys, cost math, pre-event checklist.
+- `opencode.json` — opencode configuration. Defaults the model to `opencode/deepseek-v4-flash-free` (free, no API key needed) so attendees can start chatting immediately.
 - `.gitignore` — Standard Node + Python + deploy-tool-cache ignores.
 
 ## Conventions when editing
