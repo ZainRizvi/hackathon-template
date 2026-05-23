@@ -16,8 +16,8 @@ Welcome! This template gives you a fully-configured cloud dev environment in abo
 
 | Tool | What it's for |
 | --- | --- |
-| Node.js 20 | JavaScript / TypeScript runtime |
-| Python 3.12 | Python projects |
+| Node.js 24 (LTS) | JavaScript / TypeScript runtime |
+| Python 3.13 | Python projects |
 | Docker | Run containers inside your codespace |
 | GitHub CLI (`gh`) | Talk to GitHub from the terminal |
 | opencode | AI coding assistant in your terminal |
