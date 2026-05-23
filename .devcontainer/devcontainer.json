@@ -15,7 +15,12 @@
         "mikestead.dotenv"
       ],
       "settings": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "github.copilot.enable": {
+          "*": false
+        },
+        "github.copilot.editor.enableAutoCompletions": false,
+        "chat.commandCenter.enabled": false
       }
     }
   },
