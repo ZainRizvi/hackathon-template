@@ -2,6 +2,31 @@
 
 This doc is for **you**, the event organizer — not for attendees. Covers turning this repo into a template, provisioning shared API keys, cost math, and a pre-event checklist.
 
+## 0. About the prebuilt devcontainer image
+
+Codespaces created from this template pull a **prebuilt image** from `ghcr.io/zainrizvi/hackathon-template-env:latest` instead of running a multi-minute `apt-get` + `npm install` dance on each Codespace start. Cold start drops from ~5 min to roughly 1-2 minutes (most of which is now image pull + VS Code server startup, not package installs).
+
+The image is built by `.github/workflows/build-devcontainer-image.yml` from `.devcontainer/Dockerfile` on every push to `main` that touches either of those files.
+
+### ⚠️ One-time setup: make the image public
+
+**GHCR packages are private by default on first publish.** Until you flip the package to public, every attendee's Codespace will fail to pull the image with a `denied` error. After the very first workflow run completes:
+
+1. Go to `https://github.com/users/<your-username>/packages/container/hackathon-template-env/settings` (or your org equivalent at `/orgs/<org>/packages/...`).
+2. Scroll to **Danger Zone** -> **Change visibility** -> **Public** -> confirm.
+
+This is a one-time step. Future pushes keep the visibility setting.
+
+### Forking this template to a different org
+
+If you fork to a different owner, do all of the following in order:
+
+1. Update the `image:` line in `.devcontainer/devcontainer.json` to your new owner.
+2. Update the `Published to:` comment in `.devcontainer/Dockerfile` (the workflow uses `${{ github.repository_owner }}` so the workflow itself needs no edits; the doc comment is just for humans).
+3. Trigger one workflow run manually (Actions -> "Build & publish devcontainer image" -> "Run workflow") so the image exists.
+4. **Flip the package to public per the section above.** This is the actual gating step for attendees -- skipping it is the most likely cause of "my Codespace won't start" on day one.
+5. Confirm by pulling the image from an unauthenticated terminal: `docker pull ghcr.io/<owner>/hackathon-template-env:latest`.
+
 ## 1. Mark this repo as a GitHub template
 
 Once: attendees can't "Use this template" until you flip this switch.
@@ -61,7 +86,8 @@ When an attendee creates a repo from the template **inside your org** and opens 
 
 Do this **at least 48 hours before the event**, not the morning of.
 
-- [ ] **Spin up a test codespace from this template.** Time it. Confirm `setup.sh` finishes cleanly and the version-check assertions all pass.
+- [ ] **Spin up a test codespace from this template.** Time it (expect 1-2 minutes). Confirm `node --version`, `python3 --version`, `opencode --version`, `uv --version`, `gh --version`, `vercel --version`, `netlify --version`, `wrangler --version`, `neonctl --version`, and `railway --version` all succeed in the integrated terminal.
+- [ ] **Verify the GHCR image is public** by running `docker pull ghcr.io/<owner>/hackathon-template-env:latest` from a clean terminal without auth. If it 403s, flip the package to public per section 0.
 - [ ] **Verify opencode auth works end-to-end** with the API key / mechanism you're recommending. Actually run a prompt and see a response.
 - [ ] **Test one deploy CLI** all the way to a live URL (e.g. `vercel` deploying a hello-world). This catches account-verification email roadblocks ahead of time.
 - [ ] **Check the org Codespaces secret** is visible to a fresh codespace by `echo $ANTHROPIC_API_KEY` (or whichever you set).

@@ -1,13 +1,13 @@
 # Hackathon Starter Template
 
-Welcome! This template gives you a fully-configured cloud dev environment in about 2 minutes. No installs on your laptop, no "works on my machine." You just click a few buttons in the browser and you're coding.
+Welcome! This template gives you a fully-configured cloud dev environment in about 1-2 minutes. No installs on your laptop, no "works on my machine." You just click a few buttons in the browser and you're coding.
 
 ## Getting started
 
 1. **Click the green "Use this template" button** at the top of this repo, then **Create a new repository**. Give it any name — this is your hackathon project repo.
 2. Open the new repo you just created.
 3. Click the green **`<> Code`** button → **Codespaces** tab → **Create codespace on main**.
-4. Wait ~2 minutes while it builds. You'll see a VS Code window in your browser when it's ready.
+4. Wait 1-2 minutes while it builds. You'll see a VS Code window in your browser when it's ready.
 5. Start building!
 
 > **Tip:** If you'd rather use the desktop VS Code app, install the "GitHub Codespaces" extension and connect to your codespace from there.
@@ -17,7 +17,7 @@ Welcome! This template gives you a fully-configured cloud dev environment in abo
 | Tool | What it's for |
 | --- | --- |
 | Node.js 24 (LTS) | JavaScript / TypeScript runtime |
-| Python 3.13 | Python projects |
+| Python 3.12 | Python projects |
 | Docker | Run containers inside your codespace |
 | GitHub CLI (`gh`) | Talk to GitHub from the terminal |
 | opencode | AI coding assistant in your terminal |
@@ -25,6 +25,8 @@ Welcome! This template gives you a fully-configured cloud dev environment in abo
 | Netlify CLI | Deploy static sites and functions |
 | Wrangler | Deploy to Cloudflare Workers / Pages |
 | Railway CLI | Deploy full-stack apps with databases |
+| Neon CLI (`neonctl`) | Spin up serverless Postgres databases |
+| `uv` | Fast Python package + project manager (also installs other Python versions on demand) |
 | `httpie`, `jq`, `ripgrep`, `fd`, `tmux`, `tree` | Handy command-line utilities |
 | opencode VS Code extension | Launch opencode in the editor's integrated terminal |
 | Prettier, ESLint, Pylance, Tailwind, Docker extensions | Auto-formatting and language support in VS Code |
