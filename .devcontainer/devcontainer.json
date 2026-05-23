@@ -20,10 +20,10 @@
         "dbaeumer.vscode-eslint",
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "GitHub.copilot",
-        "GitHub.copilot-chat",
         "bradlc.vscode-tailwindcss",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "yzhang.markdown-all-in-one",
+        "mikestead.dotenv"
       ],
       "settings": {
         "editor.formatOnSave": true

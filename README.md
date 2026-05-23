@@ -21,7 +21,6 @@ Welcome! This template gives you a fully-configured cloud dev environment in abo
 | Docker | Run containers inside your codespace |
 | GitHub CLI (`gh`) | Talk to GitHub from the terminal |
 | opencode | AI coding assistant in your terminal |
-| GitHub Copilot + Copilot Chat | AI suggestions and chat inside the editor |
 | Vercel CLI | Deploy frontends and serverless apps |
 | Netlify CLI | Deploy static sites and functions |
 | Wrangler | Deploy to Cloudflare Workers / Pages |
@@ -29,6 +28,8 @@ Welcome! This template gives you a fully-configured cloud dev environment in abo
 | `httpie`, `jq`, `ripgrep`, `fd`, `tmux`, `tree` | Handy command-line utilities |
 | opencode VS Code extension | Launch opencode in the editor's integrated terminal |
 | Prettier, ESLint, Pylance, Tailwind, Docker extensions | Auto-formatting and language support in VS Code |
+| Markdown All in One | Better markdown editing and preview |
+| DotENV | Syntax highlighting for `.env` files |
 
 Format-on-save is already turned on — your code gets tidied every time you hit save.
 
