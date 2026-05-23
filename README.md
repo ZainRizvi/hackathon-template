@@ -27,6 +27,7 @@ Welcome! This template gives you a fully-configured cloud dev environment in abo
 | Wrangler | Deploy to Cloudflare Workers / Pages |
 | Railway CLI | Deploy full-stack apps with databases |
 | `httpie`, `jq`, `ripgrep`, `fd`, `tmux`, `tree` | Handy command-line utilities |
+| opencode VS Code extension | Launch opencode in the editor's integrated terminal |
 | Prettier, ESLint, Pylance, Tailwind, Docker extensions | Auto-formatting and language support in VS Code |
 
 Format-on-save is already turned on — your code gets tidied every time you hit save.
