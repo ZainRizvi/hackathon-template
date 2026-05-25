@@ -31,3 +31,17 @@ The current `README.md` and `ORGANIZER.md` accumulated across this session and n
 - Keep the template-explainer content useful but visually demote it so attendees don't have to skip past it to get started
 - Make sure AI agents reading these files get clean, actionable instructions and not a guided tour
 - Cross-link consistently — right now several "how to" details live in only one file
+
+## "Adopt this template" instructions for existing repos
+
+Add a section to the README (likely near the top) that someone can paste into a coding agent (Claude Code, opencode, Cursor) running on their *existing* project repo. The agent reads it and migrates that repo to use this template's setup — prebuilt devcontainer image, opencode config, deploy CLIs, the works.
+
+Goal: lower the friction for attendees who arrive with an in-progress side project instead of starting from `Use this template`.
+
+The section should give the agent:
+- A canonical URL to the setup instructions in this repo (so the prompt itself stays short)
+- A list of what to copy in (`.devcontainer/`, `.github/workflows/build-devcontainer-image.yml`, `opencode.json`, the relevant `.vscode/` and `.gitignore` bits)
+- Guidance on what to *avoid* clobbering (existing CI workflows, existing devcontainer, existing AGENTS.md / CLAUDE.md)
+- A verification step (build the image locally, or trigger the workflow, then pull and run the sanity-check commands)
+
+Open question: do we want a separate `ADOPT.md` the agent fetches, or keep the instructions inline so the user only needs to give the agent one paste?
