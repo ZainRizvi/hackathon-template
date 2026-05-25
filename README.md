@@ -69,10 +69,11 @@ Follow the browser prompt. This uses your subscription instead of pay-per-token 
 | --- | --- |
 | Static site (HTML, plain React, Astro) | **Cloudflare Pages** (`wrangler pages deploy`) |
 | Frontend with API routes (Next.js, SvelteKit, Remix) | **Vercel** (`vercel`) or **Netlify** (`netlify deploy`) |
-| Full-stack app needing a database | **Render** (web UI, generous free tier) |
+| Full-stack app needing a database | **Railway** (`railway up`) — runs app + Postgres together |
 | Anything with a Dockerfile | **Railway** (`railway up`) |
+| Need just a Postgres database for your app | **Neon** (`neonctl projects create`) — pairs well with a Vercel/Netlify frontend |
 
-All four CLIs are pre-installed. Each one walks you through login the first time you run it.
+These CLIs are pre-installed. Each one walks you through login the first time you run it.
 
 ## Sharing a preview URL during the hack
 
