@@ -24,6 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      # QEMU lets the amd64 runner emulate arm64 for the multi-arch build.
+      - uses: docker/setup-qemu-action@v4
+
       - uses: docker/setup-buildx-action@v4
 
       - name: Log in to GHCR
@@ -45,8 +48,10 @@ jobs:
         with:
           context: .devcontainer
           file: .devcontainer/Dockerfile
-          # Codespaces only run amd64 today; revisit if Microsoft adds arm64.
-          platforms: linux/amd64
+          # amd64 covers Codespaces + most Windows/Linux/Intel-Mac dev hosts.
+          # arm64 covers Apple Silicon Macs and arm64 Windows/Linux dev hosts.
+          # Multi-arch builds via QEMU (~2x cold build, but cached per-arch).
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ steps.img.outputs.name }}:latest
