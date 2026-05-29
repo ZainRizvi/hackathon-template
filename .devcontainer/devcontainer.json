@@ -1,9 +1,8 @@
 {
   "name": "Hackathon Dev Environment",
-  "image": "ghcr.io/zainrizvi/hackathon-template-env:latest",
-  "runArgs": [
-    "--platform=linux/amd64"
-  ],
+  "build": {
+    "dockerfile": "Dockerfile.local"
+  },
   "customizations": {
     "vscode": {
       "extensions": [

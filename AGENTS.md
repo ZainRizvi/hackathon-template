@@ -10,7 +10,8 @@ The contents of this repo are **scaffolding**, not a working application. Attend
 
 ## Repo layout
 
-- `.devcontainer/devcontainer.json` — Codespaces / dev container config. Points at the prebuilt image, layers the docker-in-docker feature, declares VS Code extensions, forwarded ports, and host requirements.
+- `.devcontainer/devcontainer.json` — Codespaces / dev container config. References `Dockerfile.local` via `build:`, layers the docker-in-docker feature, declares VS Code extensions, forwarded ports, and host requirements.
+- `.devcontainer/Dockerfile.local` — Thin amd64-pinning wrapper around the prebuilt image. Referenced by `devcontainer.json`'s `build:` stanza so the platform pin is honored at feature-extension time (runArgs alone is too late). No tools live here; see `Dockerfile` for image contents.
 - `.devcontainer/Dockerfile` — The prebuilt dev environment image. Bakes in apt utilities, gh CLI, Node, Python, uv, opencode, and the deploy CLIs so a Codespace start is one image pull (no live `apt-get` or `npm install`). Ends with sanity-check assertions so a broken image fails the build instead of silently shipping.
 - `.github/workflows/build-devcontainer-image.yml` — Builds the Dockerfile and pushes to `ghcr.io/<owner>/hackathon-template-env:latest` on push to `main`. Only triggers on changes to the Dockerfile or the workflow itself.
 - `README.md` — Attendee-facing. Non-technical tone. Covers using the template, what's installed, opencode auth, deploy targets, port sharing, free-tier limits.

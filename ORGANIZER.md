@@ -27,7 +27,7 @@ This is a one-time step. Future pushes keep the visibility setting.
 
 If you fork to a different owner, do all of the following in order:
 
-1. Update the `image:` line in `.devcontainer/devcontainer.json` to your new owner.
+1. Update the `FROM` line in `.devcontainer/Dockerfile.local` to point at `ghcr.io/<your-owner>/hackathon-template-env:latest`.
 2. Update the `Published to:` comment in `.devcontainer/Dockerfile` (the workflow uses `${{ github.repository_owner }}` so the workflow itself needs no edits; the doc comment is just for humans).
 3. Trigger one workflow run manually (Actions -> "Build & publish devcontainer image" -> "Run workflow") so the image exists.
 4. **Flip the package to public per the section above.** This is the actual gating step for attendees -- skipping it is the most likely cause of "my Codespace won't start" on day one.
