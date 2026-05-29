@@ -88,6 +88,14 @@ RUN curl -fsSL https://opencode.ai/install | bash \
  && mv /root/.opencode/bin/opencode /usr/local/bin/opencode \
  && rm -rf /root/.opencode
 
+# ---- Default user files baked into the image --------------------------------
+# ~/.vscode-remote/ (Codespaces) and ~/.vscode-server/ (local Dev Containers)
+# are populated by VS Code Server at container start, so files baked at this
+# path in the image get overwritten or never read. Stage in a non-shadowed
+# location instead, then devcontainer.json's postCreateCommand + postStartCommand
+# copies them into the Server-managed directories on attach.
+COPY image-files/ /usr/local/share/hackathon-template/
+
 # ---- Sanity assertions ------------------------------------------------------
 # If any of these are missing, fail the image build loudly so a broken image
 # never ships.
@@ -101,5 +109,6 @@ RUN fd --version \
  && railway --version \
  && neonctl --version \
  && uv --version \
- && opencode --version
+ && opencode --version \
+ && test -s /usr/local/share/hackathon-template/keybindings.json
 

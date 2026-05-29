@@ -39,6 +39,7 @@ The contents of this repo are **scaffolding**, not a working application. Attend
 - Validate it parses as JSON before committing: `python3 -c "import json; json.load(open('.devcontainer/devcontainer.json'))"`.
 - Port additions should include a friendly `label` in `portsAttributes` and use `onAutoForward: notify`.
 - VS Code extensions go in `customizations.vscode.extensions` using their full marketplace IDs (e.g. `esbenp.prettier-vscode`, not just `prettier`).
+- `postCreateCommand` and `postStartCommand` are intentionally identical (the staged-file copy must run on first attach AND on session resume in case the file was deleted). If you edit one, edit the other.
 
 ## When changing `.github/workflows/build-devcontainer-image.yml`
 

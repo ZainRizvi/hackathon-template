@@ -3,6 +3,8 @@
   "build": {
     "dockerfile": "Dockerfile.local"
   },
+  "postCreateCommand": "for d in ~/.vscode-remote/data/Machine ~/.vscode-server/data/Machine; do mkdir -p \"$d\" && for f in /usr/local/share/hackathon-template/*; do [ -e \"$f\" ] || continue; [ -f \"$d/$(basename \"$f\")\" ] || cp \"$f\" \"$d/\"; done; done",
+  "postStartCommand": "for d in ~/.vscode-remote/data/Machine ~/.vscode-server/data/Machine; do mkdir -p \"$d\" && for f in /usr/local/share/hackathon-template/*; do [ -e \"$f\" ] || continue; [ -f \"$d/$(basename \"$f\")\" ] || cp \"$f\" \"$d/\"; done; done",
   "customizations": {
     "vscode": {
       "extensions": [
