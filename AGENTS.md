@@ -10,7 +10,7 @@ The contents of this repo are **scaffolding**, not a working application. Attend
 
 ## Repo layout
 
-- `.devcontainer/devcontainer.json` — Codespaces / dev container config. References `Dockerfile.local` via `build:`, layers the docker-in-docker feature, declares VS Code extensions, forwarded ports, and host requirements.
+- `.devcontainer/devcontainer.json` — Codespaces / dev container config. References `Dockerfile.local` via `build:`, declares VS Code extensions, forwarded ports, and host requirements.
 - `.devcontainer/Dockerfile.local` — Thin amd64-pinning wrapper around the prebuilt image. Referenced by `devcontainer.json`'s `build:` stanza so the platform pin is honored at feature-extension time (runArgs alone is too late). No tools live here; see `Dockerfile` for image contents.
 - `.devcontainer/Dockerfile` — The prebuilt dev environment image. Bakes in apt utilities, gh CLI, Node, Python, uv, opencode, and the deploy CLIs so a Codespace start is one image pull (no live `apt-get` or `npm install`). Ends with sanity-check assertions so a broken image fails the build instead of silently shipping.
 - `.github/workflows/build-devcontainer-image.yml` — Builds the Dockerfile and pushes to `ghcr.io/<owner>/hackathon-template-env:latest` on push to `main`. Only triggers on changes to the Dockerfile or the workflow itself.
@@ -65,6 +65,12 @@ shell — the feature is needed to set up the daemon, not just the CLI.
 ## When changing `.github/workflows/build-devcontainer-image.yml`
 
 - The first publish requires a manual "make package public" step in the GitHub UI (see ORGANIZER.md section 0). If you change the package name, attendees will hit a pull failure until that step is repeated.
+
+## When running local commands / dev servers
+
+- **Long-running processes (dev servers, watchers, REPLs, build watchers) must run in the background**, not in the foreground. A foreground `npm run dev` or `python -m http.server` blocks the agent on its own command until it's killed, which wastes the rest of the session. Use `run_in_background: true` (or `&` + `disown` from a shell), capture the output, then continue with other work.
+- After starting a server in the background, verify it actually came up before assuming success (e.g. `curl localhost:PORT/health` or check the captured log). A backgrounded process that crashed on boot looks the same as one that's serving — don't conflate them.
+- Stop background processes you started before declaring a task complete, unless the user explicitly wants them left running.
 
 ## What to push back on
 
