@@ -44,6 +44,8 @@ opencode
 
 **It just works out of the box.** This template ships an `opencode.json` that defaults to `opencode/deepseek-v4-flash-free` — a free model served through opencode's hosted gateway, no API key needed. Start chatting immediately.
 
+The template also ships a few **skills** opencode auto-loads when relevant — including building good-looking UIs, deploying to Vercel without the usual env-var/domain footguns, and drawing architecture diagrams from your code. You don't have to invoke them; just describe what you want and opencode will pull in the right context.
+
 ### Want a different / more powerful model?
 
 If your project gets serious and you want to switch to a paid model (Claude, GPT-4, DeepSeek V4 Pro, etc.), you have a few options:

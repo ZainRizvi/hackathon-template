@@ -17,6 +17,7 @@ The contents of this repo are **scaffolding**, not a working application. Attend
 - `README.md` — Attendee-facing. Non-technical tone. Covers using the template, what's installed, opencode auth, deploy targets, port sharing, free-tier limits.
 - `ORGANIZER.md` — Event-organizer-facing. Covers the prebuilt-image setup (including the one-time "make package public" step), template toggle, org Codespaces secrets for shared API keys, cost math, pre-event checklist.
 - `opencode.json` — opencode configuration. Defaults the model to `opencode/deepseek-v4-flash-free` (free, no API key needed) so attendees can start chatting immediately.
+- `.opencode/skills/` — Skill packs that opencode auto-discovers. Currently ships `frontend-design` (build distinctive UIs, avoid generic AI aesthetics), `vercel-infrastructure` (Vercel env vars, custom domains, blob storage gotchas), and `c4-diagrams` (source-grounded architecture diagrams). When opencode is asked to do work matching a skill's trigger, it loads the skill automatically.
 - `.gitignore` — Standard Node + Python + deploy-tool-cache ignores.
 
 ## Conventions when editing
