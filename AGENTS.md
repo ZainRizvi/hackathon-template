@@ -41,6 +41,27 @@ The contents of this repo are **scaffolding**, not a working application. Attend
 - VS Code extensions go in `customizations.vscode.extensions` using their full marketplace IDs (e.g. `esbenp.prettier-vscode`, not just `prettier`).
 - `postCreateCommand` and `postStartCommand` are intentionally identical (the staged-file copy must run on first attach AND on session resume in case the file was deleted). If you edit one, edit the other.
 
+## If a project actually needs Docker inside the Codespace
+
+The default Codespace deliberately does NOT install Docker — adding the
+`docker-in-docker` feature costs ~30s of cold-start time per Codespace, and
+most hackathon projects deploy to hosted services (Vercel, Railway, Neon)
+rather than running containers locally.
+
+If your project genuinely needs `docker` (e.g. running compose stacks, building
+images locally), add this to `.devcontainer/devcontainer.json`:
+
+```json
+"features": {
+  "ghcr.io/devcontainers/features/docker-in-docker:3": {}
+}
+```
+
+Then commit, push, and **create a fresh Codespace** (the feature only installs
+on container creation; rebuilding an existing Codespace via "Dev Containers:
+Rebuild Container" also works). Don't try to install Docker via `apt-get` in a
+shell — the feature is needed to set up the daemon, not just the CLI.
+
 ## When changing `.github/workflows/build-devcontainer-image.yml`
 
 - The first publish requires a manual "make package public" step in the GitHub UI (see ORGANIZER.md section 0). If you change the package name, attendees will hit a pull failure until that step is repeated.

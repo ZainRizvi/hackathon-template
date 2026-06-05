@@ -14,7 +14,6 @@
         "ms-python.python",
         "ms-python.vscode-pylance",
         "bradlc.vscode-tailwindcss",
-        "ms-azuretools.vscode-docker",
         "yzhang.markdown-all-in-one",
         "mikestead.dotenv"
       ],
@@ -56,8 +55,5 @@
     "cpus": 2,
     "memory": "4gb",
     "storage": "32gb"
-  },
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:3": {}
   }
 }
